@@ -1,0 +1,28 @@
+set nocompatible " set not compatible with vi
+
+syntax on
+
+set showmode
+set showcmd
+set showmatch " parenthesis matching
+set number " show line number
+" set cursorline " highlight current line
+set laststatus=2 " always show status
+set ruler " show cursor position
+
+set mouse=a " mouse support
+set encoding=utf-8
+
+set wrap " auto wrap for too long line
+set scrolloff=5
+
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set cindent " c-style indent
+set expandtab " use tab as space
+set softtabstop=4 " tab width = 4 space
+set backspace=indent,eol,start
+
+set nobackup
+set noswapfile
