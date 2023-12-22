@@ -50,7 +50,7 @@
 
 ;; Key bind
 
-;(global-set-key (kbd "RET") 'newline-and-indent)
+(global-set-key (kbd "RET") 'newline-and-indent)
 
 (defun next-ten-lines()
   "Move cursor to next 10 lines."
@@ -322,8 +322,16 @@
 
 (use-package markdown-mode
   :ensure t
-  :mode ("README\\.md\\'" . gfm-mode)
-  :init (setq markdown-command "multimarkdown"))
+  :mode ("README\\.md\\'" . gfm-mode)     ; GitHub Flavored Markdown
+  :init (setq markdown-command "pandoc")) ; pandoc installation is needed
+
+(use-package markdown-preview-mode
+  :ensure t)
+
+(add-to-list 'markdown-preview-javascript "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML")
+
+(use-package nasm-mode
+  :ensure t)
 
 (use-package texfrag
   :ensure t)
