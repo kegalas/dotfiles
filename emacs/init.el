@@ -76,6 +76,7 @@
 
 (cond ((display-graphic-p)
   ; When using graphical emacs
+  (set-face-attribute 'default nil :font "Jetbrains Mono-16")
   (set-fontset-font "fontset-default" 'unicode "Jetbrains Mono-16")
   (set-fontset-font "fontset-startup" 'unicode "Jetbrains Mono-16")
   (set-fontset-font "fontset-standard" 'unicode "Jetbrains Mono-16")
