@@ -333,6 +333,9 @@
 (use-package nasm-mode
   :ensure t)
 
+(use-package cmake-mode
+  :ensure t)
+
 (use-package texfrag
   :ensure t)
 
