@@ -4,6 +4,17 @@
 ;; This file bootstraps the configuration, which is divided into
 ;; a number of other files.
 
+;; things need to be installed manually if you use them:
+;; 1. Fonts: Jetbrains Mono, Noto Sans Mono CJK
+;; 2. if Emacs version < 29, install use-package manually
+;; 3. all-the-icons and all-the-icons-install-fonts
+;; 4. git when using magit
+;; 5. clangd when using c++-mode
+;; 6. 'pip install pyright' when using python-mode
+;; 7. pandoc when using markdown-mode
+;; 8. glslangValidator when using company-glsl and glsl-mode
+;;    https://github.com/KhronosGroup/glslang/releases
+
 ;;; Code:
 
 ;; Produce backtraces when errors occur: can be helpful to diagnose startup issues
@@ -336,6 +347,16 @@
 
 (use-package cmake-mode
   :ensure t)
+
+(use-package glsl-mode
+  :ensure t
+  :mode ("\\.vs$" . glsl-mode)
+        ("\\.fs$" . glsl-mode))
+
+(use-package company-glsl
+  :ensure t
+  :init (add-to-list 'company-backends 'company-glsl)) ; need to install glslangValidator,
+                                                       ; in https://github.com/KhronosGroup/glslang/releases
 
 (use-package texfrag
   :ensure t)
