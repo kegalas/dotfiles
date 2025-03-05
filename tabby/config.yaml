@@ -1,4 +1,4 @@
-version: 6
+version: 7
 groups: []
 hotkeys:
   toggle-window: []
@@ -164,6 +164,7 @@ hotkeys:
     - Ctrl-Shift-E
   command-selector:
     - Ctrl-Shift-P
+  group-selectors: {}
 terminal:
   searchOptions: {}
   colorScheme:
@@ -190,26 +191,27 @@ terminal:
       - '#ffffff'
   lightColorScheme:
     name: Solarized Light
-    foreground: '#131313'
-    background: '#FCF4DC'
-    cursor: '#617983'
+    foreground: '#2A3838'
+    background: '#fdf6e3'
+    cursor: '#002B36'
     colors:
-      - '#002831'
-      - '#d11c24'
+      - '#002B36'
+      - '#DC322F'
       - '#738a05'
-      - '#a57706'
-      - '#4FC3F7'
-      - '#c61c6f'
-      - '#259286'
-      - '#bcaaa4'
-      - '#03a9f4'
-      - '#d81b60'
+      - '#998D0A'
+      - '#7CB3E5'
+      - '#D33682'
+      - '#2AA198'
+      - '#EB5BFF'
+      - '#0D7FC4'
+      - '#CB4B16'
       - '#f57c00'
-      - '#7b1fa2'
-      - '#00897b'
-      - '#5956ba'
-      - '#66bb6a'
-      - '#546e7a'
+      - '#25944E'
+      - '#5D7ED9'
+      - '#6C71C4'
+      - '#5BB5F2'
+      - '#F680FF'
+    selection: '#FFB0A8'
   fallbackFont: 微软雅黑
   bell: visual
   profile: local:powershell-core
@@ -219,26 +221,27 @@ terminal:
   fontSize: 16
   customColorSchemes:
     - name: Solarized Light
-      foreground: '#131313'
-      background: '#FCF4DC'
-      cursor: '#617983'
+      foreground: '#2A3838'
+      background: '#fdf6e3'
+      cursor: '#002B36'
       colors:
-        - '#002831'
-        - '#d11c24'
+        - '#002B36'
+        - '#DC322F'
         - '#738a05'
-        - '#a57706'
-        - '#4FC3F7'
-        - '#c61c6f'
-        - '#259286'
-        - '#bcaaa4'
-        - '#03a9f4'
-        - '#d81b60'
+        - '#998D0A'
+        - '#7CB3E5'
+        - '#D33682'
+        - '#2AA198'
+        - '#EB5BFF'
+        - '#0D7FC4'
+        - '#CB4B16'
         - '#f57c00'
-        - '#7b1fa2'
-        - '#00897b'
-        - '#5956ba'
-        - '#66bb6a'
-        - '#546e7a'
+        - '#25944E'
+        - '#5D7ED9'
+        - '#6C71C4'
+        - '#5BB5F2'
+        - '#F680FF'
+      selection: '#FFB0A8'
 ssh: {}
 configSync:
   parts: {}

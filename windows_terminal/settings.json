@@ -1,0 +1,85 @@
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "actions": 
+    [
+        {
+            "command": 
+            {
+                "action": "copy",
+                "singleLine": false
+            },
+            "id": "User.copy.644BA8F2",
+            "keys": "ctrl+c"
+        },
+        {
+            "command": "paste",
+            "id": "User.paste",
+            "keys": "ctrl+v"
+        },
+        {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            },
+            "id": "User.splitPane.A6751878",
+            "keys": "alt+shift+d"
+        },
+        {
+            "command": "find",
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
+        }
+    ],
+    "copyFormatting": "none",
+    "copyOnSelect": false,
+    "defaultProfile": "{3651cfd6-9168-4087-a313-073958fda117}",
+    "language": "zh-Hans",
+    "newTabMenu": 
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+    "profiles": 
+    {
+        "defaults": 
+        {
+            "colorScheme": "Solarized Light (modified)"
+        },
+        "list": 
+        [
+            
+        ]
+    },
+    "schemes": 
+    [
+        {
+            "background": "#FDF6E3",
+            "black": "#002933",
+            "blue": "#7CB3E5",
+            "brightBlack": "#0D7FC4",
+            "brightBlue": "#5D7ED9",
+            "brightCyan": "#5BB5F2",
+            "brightGreen": "#25944E",
+            "brightPurple": "#6C71C4",
+            "brightRed": "#CB4B16",
+            "brightWhite": "#F680FF",
+            "brightYellow": "#A6569F",
+            "cursorColor": "#002B36",
+            "cyan": "#2AA198",
+            "foreground": "#2A3838",
+            "green": "#998D0A",
+            "name": "Solarized Light (modified)",
+            "purple": "#D33682",
+            "red": "#DC322F",
+            "selectionBackground": "#FFB0A8",
+            "white": "#EB5BFF",
+            "yellow": "#B58900"
+        }
+    ],
+    "theme": "light",
+    "themes": []
+}

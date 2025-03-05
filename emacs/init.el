@@ -61,7 +61,7 @@
 
 ;; Key bind
 
-(global-set-key (kbd "RET") 'newline-and-indent)
+; (global-set-key (kbd "RET") 'newline-and-indent)
 
 (defun next-ten-lines()
   "Move cursor to next 10 lines."
@@ -223,10 +223,14 @@
   (setq dashboard-items '((recents  . 5)
 			  (bookmarks . 5)
 			  (projects . 7)))
-  (dashboard-setup-startup-hook))
+  (dashboard-setup-startup-hook)) 
 
 (use-package yasnippet
   :ensure t
+  :bind (:map yas-minor-mode-map
+              ("TAB" . nil)
+              ("<tab>" . nil)
+              ("M-/" . 'yas-expand))
   :init (yas-global-mode 1))
 
 (use-package highlight-symbol
@@ -245,11 +249,11 @@
 
 (use-package company
   :ensure t
-  :init (global-company-mode)
+  :init (global-company-mode 1)
   :config
-  (setq company-minimum-prefix-length 1)
+  (setq company-minimum-prefix-length 0)
   (setq company-tooltip-align-annotations t)
-  (setq company-idle-delay 0.0)
+  (setq company-idle-delay 0.1)
   (setq company-show-numbers t)
   (setq company-selection-wrap-around t)
   (setq company-transformers '(company-sort-by-occurrence))
@@ -269,21 +273,38 @@
   (setq lsp-keymap-prefix "C-c l"
 	lsp-file-watch-threshold 500)
   :hook
+  (c++-mode . lsp)
+  (c-mode . lsp)
+  (python-mode . lsp)
   (lsp-mode . lsp-enable-which-key-integration)
-  :commands (lsp lsp-deferred)
+  :commands (lsp)
   :config
   (setq lsp-headerline-breadcrumb-enable t)
-  (setq lsp-idle-delay 0.0))
+  (setq lsp-idle-delay 0.1)
+  ;(setq lsp-enable-xref t)
+  (setq lsp-auto-configure t)
+  (setq lsp-clients-clangd-args '("-j=4" "-background-index" "-log=error"))
+  )
 
 (use-package lsp-ui
   :ensure t
+  :commands lsp-ui-mode
+  :hook (lsp-mode . lsp-ui-mode)
   :config
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions) ; M-.
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)   ; M-?
   (setq lsp-ui-doc-position 'top))
 
+;(use-package ccls
+;  :ensure t
+;  :hook ((c-mode c++-mode objc-mode cuda-mode) .
+;         (lambda () (require 'ccls) (lsp)))
+;  :config
+;  (setq ccls-executable "/usr/bin/ccls"))
+
 (use-package lsp-ivy
   :ensure t
+  :commands lsp-ivy-workspace-symbol
   :after (lsp-mode))
 
 (use-package projectile
@@ -293,6 +314,7 @@
   (setq projectile-mode-line "Projectile")
   (setq projectile-track-known-projects-automatically nil))
 
+  
 (use-package counsel-projectile
   :ensure t
   :after (projectile)
@@ -309,14 +331,6 @@
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
   (setq neo-autorefresh 1))
 
-(use-package c++-mode
-  :functions
-  c-toggle-hungry-state
-  :hook
-  (c-mode . lsp-deferred) ; when using lsp for c++, clangd is needed.
-  (c++-mode . lsp-deferred)
-  (c++-mode . c-toggle-hungry-state))
-
 (use-package lsp-pyright ; pip install pyright
   :ensure t
   :config
@@ -332,40 +346,41 @@
 (use-package yasnippet-snippets
   :ensure t)
 
-(use-package markdown-mode
-  :ensure t
-  :mode ("README\\.md\\'" . gfm-mode)     ; GitHub Flavored Markdown
-  :init (setq markdown-command "pandoc")) ; pandoc installation is needed
+; (use-package markdown-mode
+;  :ensure t
+;  :mode ("README\\.md\\'" . gfm-mode)     ; GitHub Flavored Markdown
+;  :init (setq markdown-command "pandoc")) ; pandoc installation is needed
 
-(use-package markdown-preview-mode
-  :ensure t)
+; (use-package markdown-preview-mode
+;  :ensure t)
 
-(add-to-list 'markdown-preview-javascript "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML")
+; (add-to-list 'markdown-preview-javascript "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML")
 
-(use-package nasm-mode
-  :ensure t)
+; (use-package nasm-mode
+;  :ensure t)
 
 (use-package cmake-mode
   :ensure t)
 
-(use-package glsl-mode
-  :ensure t
-  :mode ("\\.vs$" . glsl-mode)
-        ("\\.fs$" . glsl-mode))
+; (use-package glsl-mode
+;  :ensure t
+;  :mode ("\\.vs$" . glsl-mode)
+;        ("\\.fs$" . glsl-mode))
 
-(use-package company-glsl
-  :ensure t
-  :init (add-to-list 'company-backends 'company-glsl)) ; need to install glslangValidator,
+; (use-package company-glsl
+;   :ensure t
+;   :init (add-to-list 'company-backends 'company-glsl)) ; need to install glslangValidator,
                                                        ; in https://github.com/KhronosGroup/glslang/releases
 
-(use-package texfrag
-  :ensure t)
+; (use-package texfrag
+;   :ensure t)
 
 (use-package goto-chg
   :ensure t)
 
 (use-package evil
   :ensure t
+  :config (evil-set-initial-state 'dashboard-mode 'emacs)
   :init (evil-mode))
 
 ;; Theme
